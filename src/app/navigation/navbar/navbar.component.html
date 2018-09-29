@@ -1,3 +1,13 @@
-<p>
-  navbar works!
-</p>
+<mat-toolbar color="primary">
+  <div fxHide.gt-xs>
+    <button mat-icon-button (click)="onToggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div><a routerLink="/">TRIVIA</a></div>
+  <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+    <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+      <li><a routerLink="/new-questions">New Questions</a></li>
+    </ul>
+  </div>
+</mat-toolbar>

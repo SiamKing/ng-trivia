@@ -9,13 +9,15 @@ import { MaterialModule } from './material/material.module';
 import { NavbarComponent } from './navigation/navbar/navbar.component';
 import { SidenavComponent } from './navigation/sidenav/sidenav.component';
 import { HomeComponent } from './home/home.component';
+import { SetupComponent } from './setup/setup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     SidenavComponent,
-    HomeComponent
+    HomeComponent,
+    SetupComponent
   ],
   imports: [
     BrowserModule,
