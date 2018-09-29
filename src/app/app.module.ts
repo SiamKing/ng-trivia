@@ -10,6 +10,7 @@ import { NavbarComponent } from './navigation/navbar/navbar.component';
 import { SidenavComponent } from './navigation/sidenav/sidenav.component';
 import { HomeComponent } from './home/home.component';
 import { SetupComponent } from './setup/setup.component';
+import { SetupDialogComponent } from './dialog/setup-dialog/setup-dialog.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SetupComponent } from './setup/setup.component';
     NavbarComponent,
     SidenavComponent,
     HomeComponent,
-    SetupComponent
+    SetupComponent,
+    SetupDialogComponent
   ],
   imports: [
     BrowserModule,
