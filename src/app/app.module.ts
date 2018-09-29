@@ -9,8 +9,8 @@ import { MaterialModule } from './material/material.module';
 import { NavbarComponent } from './navigation/navbar/navbar.component';
 import { SidenavComponent } from './navigation/sidenav/sidenav.component';
 import { HomeComponent } from './home/home.component';
-import { SetupComponent } from './setup/setup.component';
 import { SetupDialogComponent } from './dialog/setup-dialog/setup-dialog.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,6 @@ import { SetupDialogComponent } from './dialog/setup-dialog/setup-dialog.compone
     NavbarComponent,
     SidenavComponent,
     HomeComponent,
-    SetupComponent,
     SetupDialogComponent
   ],
   imports: [
@@ -26,9 +25,11 @@ import { SetupDialogComponent } from './dialog/setup-dialog/setup-dialog.compone
     AppRoutingModule,
     MaterialModule,
     BrowserAnimationsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [SetupDialogComponent]
 })
 export class AppModule { }
