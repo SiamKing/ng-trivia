@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   welcome = true;
   category: string;
   difficulty: string;
-  categories = [].concat(...categories.map(cat => Object.keys(cat)));
+  categories = categories;
   difficulties = difficulties;
 
 

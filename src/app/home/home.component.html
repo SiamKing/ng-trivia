@@ -1,10 +1,10 @@
 <div fxLayout="row" fxLayoutAlign="center center" class="vh-100">
-  <mat-card *ngIf="welcome" fxFlex="50%" class="welcome">
-      <mat-card-header class="center">
-          <mat-card-title><h1>Welcome to Trivia Time!</h1></mat-card-title>
+  <mat-card *ngIf="welcome" fxFlex="40%" class="welcome">
+      <mat-card-header fxLayoutAlign="center">
+          <mat-card-title fxLayoutAlign="center"><h1>Welcome to Trivia Time!</h1></mat-card-title>
       </mat-card-header>
-      <mat-card-actions align="center">
-          <button mat-raised-button color="accent" (click)="openDialog()"><mat-icon>play_arrow</mat-icon>Play</button>
+      <mat-card-actions fxLayoutAlign="center">
+          <button mat-raised-button color="accent" (click)="openDialog()"><mat-icon class="animated heartBeat infinite slower">play_arrow</mat-icon>&nbsp;Play</button>
       </mat-card-actions>
   </mat-card>
 </div>
