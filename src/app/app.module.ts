@@ -11,6 +11,9 @@ import { SidenavComponent } from './navigation/sidenav/sidenav.component';
 import { HomeComponent } from './home/home.component';
 import { SetupDialogComponent } from './dialog/setup-dialog/setup-dialog.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { PlayComponent } from './play/play.component';
+import { QuestionDialogComponent } from './dialog/question-dialog/question-dialog.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     SidenavComponent,
     HomeComponent,
-    SetupDialogComponent
+    SetupDialogComponent,
+    PlayComponent,
+    QuestionDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,10 +31,11 @@ import { FormsModule } from '@angular/forms';
     MaterialModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [SetupDialogComponent]
+  entryComponents: [SetupDialogComponent, QuestionDialogComponent]
 })
 export class AppModule { }
