@@ -12,31 +12,32 @@ export class Result {
 
 export interface Category {
     name: string;
+    id: number;
 }
 
 export const categories = [
-    { 'General Knowledge': 9 },
-    { 'Entertainment: Books': 10 },
-    { 'Entertainment: Films': 11 },
-    { 'Entertainment: Music': 12 },
-    { 'Entertainment: TV': 14 },
-    { 'Science and Nature': 17 },
-    { 'Computers': 18 },
-    { 'Mathematics': 19 },
-    { 'Mythology': 20 },
-    { 'Sports': 21 },
-    { 'Geography': 22 },
-    { 'History': 23 },
-    { 'Politics': 24 },
-    { 'Art': 25 },
-    { 'Celebrities': 26 },
-    { 'Animals': 27 },
-    { 'Vehicles': 28 },
-    { 'Science: Gadgets': 30 }
+    { name: 'General Knowledge', id: 9 },
+    { name: 'Entertainment: Books', id: 10 },
+    { name: 'Entertainment: Films', id: 11 },
+    { name: 'Entertainment: Music', id: 12 },
+    { name: 'Entertainment: TV', id: 14 },
+    { name: 'Science and Nature', id: 17 },
+    { name: 'Computers', id: 18 },
+    { name: 'Mathematics', id: 19 },
+    { name: 'Mythology', id: 20 },
+    { name: 'Sports', id: 21 },
+    { name: 'Geography', id: 22 },
+    { name: 'History', id: 23 },
+    { name: 'Politics', id: 24 },
+    { name: 'Art', id: 25 },
+    { name: 'Celebrities', id: 26 },
+    { name: 'Animals', id: 27 },
+    { name: 'Vehicles', id: 28 },
+    { name: 'Science: Gadgets', id: 30 }
 ]
 
 export interface Difficulty {
     name: string;
 }
 
-export const difficulties = ['Easy', 'Medium', 'Hard']
+export const difficulties = ['easy', 'medium', 'hard']
