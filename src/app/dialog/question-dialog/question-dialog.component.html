@@ -1,20 +1,18 @@
 <div
   class="container"
-  fxLayout="row"
-  fxLayoutGap="0.5%"
-  fxLayoutAlign="center"
+  fxLayout
 >
   <mat-dialog-content>
     <mat-card-subtitle>
-      {{ data.category }} <span>{{ data.index }} / 10</span>
+      <span>{{ data.category }}</span><span fxFlex>{{ data.index }} / 10</span>
     </mat-card-subtitle>
-    <mat-card-title [outerHTML]="data.question"></mat-card-title>
+    <mat-card-title>{{ data.question | htmlDecoder }}</mat-card-title>
     <mat-card-content>
       <mat-grid-list
         [cols]="breakpoint"
         (window:resize)="onResize($event)"
         gutterSize="40px"
-        rowHeight="2:1"
+        [rowHeight]="rowHeight"
       >
         <mat-grid-tile
           colspan="1"
@@ -25,8 +23,16 @@
           *ngFor="let answer of data.answers"
           (click)="onAnswer(answer)"
           [attr.disabled]="answered ? true : null"
-        ><span [innerHTML]="answer | titlecase"></span></mat-grid-tile>
+        >
+          {{ answer | htmlDecoder | titlecase }}
+        </mat-grid-tile>
       </mat-grid-list>
     </mat-card-content>
   </mat-dialog-content>
 </div>
+<br>
+  <mat-progress-bar
+    mode="determinate"
+    [value]="countDown"
+    color="primary"
+  ></mat-progress-bar>

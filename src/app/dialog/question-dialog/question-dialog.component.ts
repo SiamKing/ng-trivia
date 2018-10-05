@@ -1,5 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBarConfig, MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition } from '@angular/material';
+
+import { UiService } from '../../shared/ui.service';
+import { correctMessages } from '../../data.model';
+import { incorrectMessages } from '../../data.model';
+import { ScoreService } from '../../shared/score.service';
 
 @Component({
   selector: 'app-question-dialog',
@@ -11,39 +16,75 @@ export class QuestionDialogComponent implements OnInit {
   correctAnswer;
   incorrectAnswer;
   breakpoint: number;
+  rowHeight: string;
+  config = new MatSnackBarConfig();
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  duration = 3000;
+  countDown = 100;
+  timer: number;
+  correctAnswers = 0;
+  incorrectAnswers = 0;
 
   constructor(public dialogRef: MatDialogRef<any>,
-              @Inject(MAT_DIALOG_DATA) public data: any) {}
+              @Inject(MAT_DIALOG_DATA) public data: any,
+              private uiService: UiService,
+              private scoreService: ScoreService) {}
 
   ngOnInit() {
-    console.log(this.data);
-    this.breakpoint = (window.innerWidth <= 600 ? 1 : 2);
+    this.breakpoint = (window.innerWidth <= 570 ? 1 : 2);
+    this.rowHeight = (window.innerWidth <= 570 ? '12:1' : '4:1');
+    this.config.verticalPosition = this.verticalPosition;
+    this.config.horizontalPosition = this.horizontalPosition;
+    this.config.duration = this.duration;
+    this.startTimer();
+  }
+
+  startTimer() {
+    this.timer = setInterval(() => {
+      this.countDown = this.countDown - 10;
+    }, 1000)
+  }
+
+  stopTimer() {
+    
   }
 
   onResize(event) {
-    this.breakpoint = (window.innerWidth <= 600 ? 1 : 2);
+    this.breakpoint = (window.innerWidth <= 570 ? 1 : 2);
+    this.rowHeight = (window.innerWidth <= 570 ? '12:1' : '4:1');
   }
 
   onNoClick(): void {
-    console.log('fat');
     this.dialogRef.close();
+    this.evaluateAnswer(null, false, 'incorrectScore');
   }
 
   onAnswer(answer: string) {
+    clearInterval(this.timer);
     this.answered = true;
     if (answer === this.data.correctAnswer) {
-      this.correctAnswer = answer;
+      this.evaluateAnswer(answer, true, 'correctScore');
     } else {
-      this.correctAnswer = this.data.correctAnswer;
-      this.incorrectAnswer = answer;
+      this.evaluateAnswer(answer, false, 'incorrectScore');
     }
     setTimeout(() => {
       this.dialogRef.close();
-    }, 5000)
+    }, 4000)
   }
 
-  getColor(answer: string) {
-   
+  evaluateAnswer(answer: string, correct: boolean, score: string) {
+    this.correctAnswer = correct ? answer : this.data.correctAnswer;
+    this.incorrectAnswer = correct ? null : answer;
+    if (correct) {
+      this.uiService.showSnackBar(correctMessages[Math.floor(Math.random() * 6)], null, this.config);
+      this.scoreService.setScore(true, this.countDown);
+    } else {
+      this.uiService.showSnackBar(incorrectMessages[Math.floor(Math.random() * 6)] + `   The correct answer is ${this.correctAnswer}!`, null, this.config);
+      this.scoreService.setScore(false, null);
+    }
+    console.log(this.scoreService.getScore());
   }
+
 
 }
