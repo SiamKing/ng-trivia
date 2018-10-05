@@ -1,43 +1,44 @@
-<form
-  #f="ngForm"
-  (ngSubmit)="onSubmit(f)"
->
-  <mat-dialog-content>
-    <mat-form-field>
-      <mat-select
-        placeholder="Select a Category"
-        ngModel
-        name="category"
-      >
-        <mat-option
-          *ngFor="let category of data.categories"
-          [value]="category"
-        >{{ category.name }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-select
-        placeholder="Select Difficulty"
-        ngModel
-        name="difficulty"
-      >
-        <mat-option
-          *ngFor="let difficulty of data.difficulties"
-          [value]="difficulty"
-        >{{ difficulty | titlecase }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </mat-dialog-content>
-  <mat-dialog-actions>
-    <button
-      mat-raised-button
-      color="accent"
-      
-    >Play Trivia</button>
-    <button
-      mat-raised-button
-      (click)="cancel()"
-    >Cancel</button>
-  </mat-dialog-actions>
+<div fxLayout="column" fxLayoutAlign="center">
+  <form
+    #f="ngForm"
+    (ngSubmit)="onSubmit(f)"
+  >
+    <mat-dialog-content >
+      <mat-form-field>
+        <mat-select
+          placeholder="Select a Category"
+          ngModel
+          name="category"
+        >
+          <mat-option
+            *ngFor="let category of data.categories"
+            [value]="category"
+          >{{ category.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select
+          placeholder="Select Difficulty"
+          ngModel
+          name="difficulty"
+        >
+          <mat-option
+            *ngFor="let difficulty of data.difficulties"
+            [value]="difficulty"
+          >{{ difficulty | titlecase }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button
+        mat-raised-button
+        color="accent"
+      >Play Trivia</button>
+      <button
+        mat-raised-button
+        (click)="cancel()"
+      >Cancel</button>
+    </mat-dialog-actions>
 
-</form>
+  </form>
+</div>
