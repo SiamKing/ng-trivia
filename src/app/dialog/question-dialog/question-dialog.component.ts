@@ -42,7 +42,10 @@ export class QuestionDialogComponent implements OnInit {
 
   startTimer() {
     this.timer = setInterval(() => {
-      this.countDown = this.countDown - 10;
+      this.countDown -= 10;
+      if (this.countDown === 0) {
+        this.onAnswer(null)
+      }
     }, 1000)
   }
 
