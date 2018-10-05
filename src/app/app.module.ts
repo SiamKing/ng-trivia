@@ -16,6 +16,7 @@ import { PlayComponent } from './play/play.component';
 import { QuestionDialogComponent } from './dialog/question-dialog/question-dialog.component';
 import { HtmlDecoderPipe } from './shared/html-decoder.pipe';
 import { ScoreDialogComponent } from './dialog/score-dialog/score-dialog.component';
+import { InstructionsComponent } from './instructions/instructions.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ScoreDialogComponent } from './dialog/score-dialog/score-dialog.compone
     QuestionDialogComponent,
     HtmlDecoderPipe,
     ScoreDialogComponent,
+    InstructionsComponent,
   ],
   imports: [
     BrowserModule,

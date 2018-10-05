@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   openDialog(): void {
     this.welcome = false;
     const dialogRef = this.dialog.open(SetupDialogComponent, {
-      width: '250px',
+      // width: '250px',
       data: {
         categories: this.categories,
         difficulties: this.difficulties
