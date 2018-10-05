@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PlayComponent } from './play/play.component';
 import { QuestionDialogComponent } from './dialog/question-dialog/question-dialog.component';
+import { HtmlDecoderPipe } from './shared/html-decoder.pipe';
+import { ScoreDialogComponent } from './dialog/score-dialog/score-dialog.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { QuestionDialogComponent } from './dialog/question-dialog/question-dialo
     SetupDialogComponent,
     PlayComponent,
     QuestionDialogComponent,
+    HtmlDecoderPipe,
+    ScoreDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +40,6 @@ import { QuestionDialogComponent } from './dialog/question-dialog/question-dialo
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [SetupDialogComponent, QuestionDialogComponent]
+  entryComponents: [SetupDialogComponent, QuestionDialogComponent, ScoreDialogComponent]
 })
 export class AppModule { }
