@@ -40,4 +40,8 @@ export interface Difficulty {
     name: string;
 }
 
-export const difficulties = ['easy', 'medium', 'hard']
+export const difficulties = ['easy', 'medium', 'hard'];
+
+export const correctMessages = ['You are correct!', 'Take a bow!', 'You are on FIRE!', 'Way to go!', 'You da best!', 'Damn, smokey! Puff, puff, give!'];
+
+export const incorrectMessages = ['Nope!', 'Almost, but wrong again:(', 'Wow, you suck!', 'Man, you are bad at this!', 'You stink!', 'I would just quit if I were you.'];
