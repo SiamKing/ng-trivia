@@ -1,0 +1,12 @@
+.instructions-container {
+    height: 80vh;
+}
+
+ul {
+    padding-left: 10px;
+    list-style: none; 
+}
+
+li {
+    margin-bottom: 10px;
+}

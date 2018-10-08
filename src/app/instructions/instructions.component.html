@@ -1,28 +1,26 @@
 <div
-  class="container"
   fxLayout="row"
   fxLayoutAlign="center center"
+  class="instructions-container"
 >
   <mat-card
-    fxFlex.sm="100%"
+    fxFlex.lt-sm="100%"
     fxFlex="65%"
   >
     <mat-card-header>
-      <mat-card-title>How to Play Trivia</mat-card-title>
+      <mat-card-title><h2>How to Play Trivia</h2></mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <mat-list dense>
-        <mat-list-item *ngFor="let instruction of instructions">
-          {{ instruction }}
-        </mat-list-item>
-      </mat-list>
+      <ul>
+        <li *ngFor="let instruction of instructions">{{ instruction }}</li>
+      </ul>
     </mat-card-content>
     <mat-card-actions align="start">
       <button
         mat-button
         (click)="onPlay()"
       >
-        <mat-icon class="animated wobble infinite">play_arrow</mat-icon>&nbsp;Play Trivia
+        <mat-icon class="animated wobble infinite delay-4s">play_arrow</mat-icon>&nbsp;Play Trivia
       </button>
     </mat-card-actions>
   </mat-card>
