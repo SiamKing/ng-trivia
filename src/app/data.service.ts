@@ -23,9 +23,9 @@ export class DataService {
     }
   }
 
-
   setValues(category: Category, difficulty: string) {
     this.category = category;
     this.difficulty = difficulty;
   }
+
 }
