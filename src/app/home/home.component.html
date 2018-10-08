@@ -1,28 +1,26 @@
-<div class="cells">
-    <div
-        fxLayout="row"
-        fxLayoutAlign="center center"
-        class="container"
+<div
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    class="container"
+>
+    <mat-card
+        fxFlex.xs="100%"
+        fxFlex="50%"
+        class="welcome"
     >
-        <mat-card
-            fxFlex.xs="100%"
-            fxFlex="50%"
-            class="welcome"
-        >
-            <mat-card-header fxLayoutAlign="center">
-                <mat-card-title>
-                    <h1 class="display-1">Welcome to Trivia Time!</h1>
-                </mat-card-title>
-            </mat-card-header>
-            <mat-card-actions fxLayoutAlign="center">
-                <button
-                    mat-raised-button
-                    color="accent"
-                    routerLink="/setup"
-                >
-                    <mat-icon class="animated heartBeat infinite slower">play_arrow</mat-icon>&nbsp;Play
-                </button>
-            </mat-card-actions>
-        </mat-card>
-    </div>
+        <mat-card-header fxLayoutAlign="center">
+            <mat-card-title>
+                <h1 class="display-1">Welcome to Trivia Time!</h1>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-actions fxLayoutAlign="center">
+            <button
+                mat-raised-button
+                color="accent"
+                routerLink="/setup"
+            >
+                <mat-icon class="animated heartBeat infinite slower">play_arrow</mat-icon>&nbsp;Play
+            </button>
+        </mat-card-actions>
+    </mat-card>
 </div>
