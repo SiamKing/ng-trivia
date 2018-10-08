@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AngularFireModule } from '@angular/fire';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,8 @@ import { QuestionDialogComponent } from './dialog/question-dialog/question-dialo
 import { HtmlDecoderPipe } from './shared/html-decoder.pipe';
 import { ScoreDialogComponent } from './dialog/score-dialog/score-dialog.component';
 import { InstructionsComponent } from './instructions/instructions.component';
+import { environment } from '../environments/environment';
+import { SetupComponent } from './setup/setup.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,7 @@ import { InstructionsComponent } from './instructions/instructions.component';
     HtmlDecoderPipe,
     ScoreDialogComponent,
     InstructionsComponent,
+    SetupComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,8 @@ import { InstructionsComponent } from './instructions/instructions.component';
     BrowserAnimationsModule,
     FlexLayoutModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
   bootstrap: [AppComponent],
