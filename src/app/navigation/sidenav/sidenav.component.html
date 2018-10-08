@@ -1,4 +1,4 @@
-<mat-nav-list>
-  <a mat-list-item routerLink="/play">Play</a>
+<mat-nav-list (click)="onSidenavClose()">
+  <a mat-list-item (click)="onPlay()">Play</a>
   <a mat-list-item routerLink="/instructions">Rules</a>
 </mat-nav-list>
