@@ -32,11 +32,13 @@
     <mat-dialog-actions>
       <button
         mat-raised-button
+        type="submit"
         color="accent"
       >Play Trivia</button>
       <button
         mat-raised-button
-        (click)="cancel()"
+        type="button"
+        (click)="onCancel()"
       >Cancel</button>
     </mat-dialog-actions>
 
