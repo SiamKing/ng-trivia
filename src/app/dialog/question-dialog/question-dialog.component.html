@@ -21,7 +21,7 @@
               'incorrect': answer === incorrectAnswer && answered
             }"
           *ngFor="let answer of data.answers"
-          (click)="onAnswer(answer)"
+          (click)="answered ? null : onAnswer(answer)"
           [attr.disabled]="answered ? true : null"
         >
           {{ answer | htmlDecoder | titlecase }}
