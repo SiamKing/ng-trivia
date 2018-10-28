@@ -59,8 +59,8 @@ export class QuestionDialogComponent implements OnInit {
   }
 
   onNoClick(): void {
-    this.dialogRef.close();
-    this.evaluateAnswer(null, false, 'incorrectScore');
+    // this.dialogRef.close();
+    // this.evaluateAnswer(null, false, 'incorrectScore');
   }
 
   onAnswer(answer: string) {
