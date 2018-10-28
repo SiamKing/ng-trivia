@@ -10,7 +10,7 @@
     >
         <mat-card-header fxLayoutAlign="center">
             <mat-card-title>
-                <h1 class="display-1">Welcome to Trivia Time!</h1>
+                <h1 class="display-1 animated rubberBand">Welcome to Trivia Time!</h1>
             </mat-card-title>
         </mat-card-header>
         <mat-card-actions fxLayoutAlign="center">
@@ -18,8 +18,9 @@
                 mat-raised-button
                 color="accent"
                 routerLink="/setup"
+                class="width-150 p-10"
             >
-                <mat-icon class="animated heartBeat infinite slower">play_arrow</mat-icon>&nbsp;Play
+                <mat-icon class="animated heartBeat infinite slower">play_arrow</mat-icon>&nbsp;<span class="font-2vw p-t-2 p-b-2">Play</span>
             </button>
         </mat-card-actions>
     </mat-card>
