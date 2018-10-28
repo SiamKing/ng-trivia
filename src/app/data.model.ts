@@ -29,11 +29,9 @@ export const categories = [
     { name: 'Geography', id: 22 },
     { name: 'History', id: 23 },
     { name: 'Politics', id: 24 },
-    { name: 'Art', id: 25 },
     { name: 'Celebrities', id: 26 },
     { name: 'Animals', id: 27 },
     { name: 'Vehicles', id: 28 },
-    { name: 'Science: Gadgets', id: 30 }
 ]
 
 export interface Difficulty {
