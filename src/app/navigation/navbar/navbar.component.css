@@ -1,6 +1,6 @@
 .navigation-items {
     list-style: none;
-    padding: 0;
+    padding: 20px;
     margin: 0;
 }
 
@@ -12,4 +12,14 @@ a {
 a:hover, a:active {
     color: lightgray;
     cursor: pointer;
+}
+
+.transparent {
+    background-color: transparent;
+}
+
+@media only screen and (max-width: 600px) {
+    navigation-items {
+        padding: 0;
+    }
 }

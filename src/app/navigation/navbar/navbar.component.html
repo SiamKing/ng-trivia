@@ -1,13 +1,13 @@
-<mat-toolbar color="primary">
-  <div fxHide.gt-xs>
+<mat-toolbar class="transparent">
+  <div fxHide.gt-xs class="navigation-items">
     <button
       mat-icon-button
       (click)="onToggleSidenav()"
     >
-      <mat-icon>menu</mat-icon>
+      <mat-icon style="color: white; padding-left: 0;">menu</mat-icon>
     </button>
   </div>
-  <div><a routerLink="/">TRIVIA</a></div>
+  <div fxFlex fxLayout fxLayoutAlign.lt-sm="flex-end"><a routerLink="/">TRIVIA</a></div>
   <div
     fxFlex
     fxLayout
@@ -19,7 +19,7 @@
       fxLayoutGap="25px"
       class="navigation-items"
     >
-      <li><a (click)="onPlay()">Play</a></li>
+      <li><a routerLink="/setup">Play</a></li>
       <li><a routerLink="/instructions">Rules</a></li>
     </ul>
   </div>
