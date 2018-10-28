@@ -32,14 +32,10 @@ export class PlayComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.getQuestions().subscribe(res => {
-      if (res['response_code'] == 1) {
-        this.router.navigate(['/']);
-      } else {
-        this.results = res['results'];
-        this.setQuestion();
-        this.loading = false;
-      }
-    })
+      this.results = res['results'];
+      this.setQuestion();
+      this.loading = false;
+    });
   }
 
 
@@ -61,6 +57,7 @@ export class PlayComponent implements OnInit {
     const dialogRef = this.dialog.open(QuestionDialogComponent, {
       // width: '60%',
       // height: '60%',
+      disableClose: true,
       data: {
         category: this.category,
         question: this.question,
@@ -83,6 +80,8 @@ export class PlayComponent implements OnInit {
     const score = this.scoreService.getScore();
     console.log(score);
     const dialogRef = this.dialog.open(ScoreDialogComponent, {
+      disableClose: true,
+      height: '320px',
       data: {
         correct: score.correct,
         incorrect: score.incorrect,
@@ -91,7 +90,7 @@ export class PlayComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(res => {
-      console.log(res);
+      console.log('close score');
     })
   }
 
