@@ -1,6 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
-import { DataService } from '../../data.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -10,17 +8,12 @@ import { DataService } from '../../data.service';
 export class SidenavComponent implements OnInit {
   @Output() sidenavClose = new EventEmitter<void>();
 
-  constructor(private dataService: DataService, private router: Router) { }
+  constructor() { }
 
   ngOnInit() {
   }
 
   onSidenavClose() {
     this.sidenavClose.emit();
-  }
-
-  onPlay() {
-    this.dataService.setWelcome(false);
-    this.router.navigate(['/setup']);
   }
 }
