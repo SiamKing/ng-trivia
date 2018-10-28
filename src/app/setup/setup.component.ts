@@ -26,7 +26,7 @@ export class SetupComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(SetupDialogComponent, {
-      width: '250px',
+      width: '350px',
       data: {
         categories: this.categories,
         difficulties: this.difficulties
