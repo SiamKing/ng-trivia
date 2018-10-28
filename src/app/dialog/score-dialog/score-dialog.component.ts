@@ -14,4 +14,8 @@ export class ScoreDialogComponent implements OnInit {
   ngOnInit() {
   }
 
+  closeDialog() {
+    this.dialogRef.close();
+  }
+
 }

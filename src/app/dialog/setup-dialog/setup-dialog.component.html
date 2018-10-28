@@ -3,12 +3,13 @@
     #f="ngForm"
     (ngSubmit)="onSubmit(f)"
   >
-    <mat-dialog-content >
-      <mat-form-field>
+    <mat-dialog-content>
+      <mat-form-field class="width-300 font-2vw sm-width-240">
         <mat-select
           placeholder="Select a Category"
           ngModel
           name="category"
+          required
         >
           <mat-option
             *ngFor="let category of data.categories"
@@ -16,11 +17,12 @@
           >{{ category.name }}</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field class="width-300 font-2vw sm-width-240">
         <mat-select
           placeholder="Select Difficulty"
           ngModel
           name="difficulty"
+          required
         >
           <mat-option
             *ngFor="let difficulty of data.difficulties"
@@ -31,6 +33,7 @@
     </mat-dialog-content>
     <mat-dialog-actions>
       <button
+        [disabled]="f.invalid"
         mat-raised-button
         type="submit"
         color="accent"
