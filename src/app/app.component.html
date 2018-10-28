@@ -1,4 +1,4 @@
-<mat-sidenav-container>
+<mat-sidenav-container class="cells">
   <mat-sidenav
     #sidenav
     role="navigation"
@@ -7,7 +7,7 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <app-navbar (sidenavToggle)="sidenav.toggle()"></app-navbar>
-    <main class="cells">
+    <main>
       <router-outlet></router-outlet>
     </main>
   </mat-sidenav-content>
