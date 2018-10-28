@@ -1,3 +1,20 @@
 <mat-dialog-content>
-  You got {{ data.correct }} right and {{ data.incorrect }} wrong! With a total of {{ data.points }}
+  <h2>Total Correct Answers: {{ data.correct }}</h2>
+  <h2>Total Incorrect Answers: {{ data.incorrect }}</h2>
+  <h2>Total Points: {{ data.points }}</h2>
+  
+  <mat-dialog-actions (click)=closeDialog()>
+    <button
+      mat-raised-button
+      color="accent"
+      type="button"
+      routerLink="/setup"
+    >Play Again</button>
+    <button
+      mat-raised-button
+      type="button"
+      routerLink="/"
+    >Quit</button>
+  </mat-dialog-actions>
+  
 </mat-dialog-content>
