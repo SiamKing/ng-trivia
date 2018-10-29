@@ -82,6 +82,7 @@ export class PlayComponent implements OnInit {
     const dialogRef = this.dialog.open(ScoreDialogComponent, {
       disableClose: true,
       height: '320px',
+      minHeight: '60%',
       data: {
         correct: score.correct,
         incorrect: score.incorrect,
