@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material';
 
 import { SetupDialogComponent } from '../dialog/setup-dialog/setup-dialog.component';
 import { categories, difficulties } from '../data.model';
+import { ScoreService } from '../shared/score.service';
 
 @Component({
   selector: 'app-setup',
@@ -15,9 +16,10 @@ export class SetupComponent implements OnInit {
   categories = categories;
   difficulties = difficulties;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private scoreService: ScoreService) { }
 
   ngOnInit() {
+    this.scoreService.resetScore();
     setTimeout(() => {
       this.openDialog();
     }, 500)
