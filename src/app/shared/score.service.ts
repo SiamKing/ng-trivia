@@ -29,4 +29,9 @@ export class ScoreService {
   getScore() {
     return { correct: this.correctScore, incorrect: this.incorrectScore, points: this.points };
   }
+
+  resetScore() {
+    this.correctScore = 0;
+    this.incorrectScore = 0;
+  }
 }
