@@ -31,6 +31,8 @@ mat-grid-tile {
     border-radius: 25px;
     cursor: pointer;
     border: 1px solid lightgrey;
+    font-size: 22px;
+    font-weight: 300;
 }
 
 mat-grid-tile:hover {
@@ -39,6 +41,7 @@ mat-grid-tile:hover {
 
 mat-card-title {
     min-width: 60vw;
+    font-size: 24px;
 }
 
 mat-card-subtitle span {
