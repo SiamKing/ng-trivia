@@ -109,9 +109,6 @@ app-question-dialog {
     text-align: right;
 }
 
-.font-2vw {
-	font-size: 2vw;
-}
 
 /***** MARGIN *****/
 .m-t-5 {
@@ -154,8 +151,33 @@ app-question-dialog {
 
 
 /***** FONTS *****/
-.font-stretch-expanded {
-	font-stretch: expanded
+.font-expand {
+	letter-spacing: 4px;
+}
+
+
+.font-2vw {
+	font-size: 2vw;
+}
+
+.font-3vw {
+	font-size: 3vw;
+}
+
+.font-4vw {
+	font-size: 4vw;
+}
+
+.font-18 {
+	font-size: 18px;
+}
+
+.font-24 {
+	font-size: 24px;
+}
+
+.font-28 {
+	font-size: 28px;
 }
 
 
