@@ -6,7 +6,7 @@
     <mat-card-subtitle>
       <span>{{ data.category }}</span><span fxFlex>{{ data.index }} / 10</span>
     </mat-card-subtitle>
-    <mat-card-title>{{ data.question | htmlDecoder }}</mat-card-title>
+    <mat-card-title class="p-t-10 p-b-10">{{ data.question | htmlDecoder }}</mat-card-title>
     <mat-card-content>
       <mat-grid-list
         [cols]="breakpoint"
