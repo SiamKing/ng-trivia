@@ -1,4 +1,9 @@
 <mat-nav-list (click)="onSidenavClose()">
   <a mat-list-item routerLink="/setup">Play</a>
   <a mat-list-item routerLink="/instructions">Rules</a>
+  <div *ngIf="">
+    <a mat-list-item routerLink="/login">Login</a>
+    <a mat-list-item routerLink="/signup">Signup</a>
+  </div>
+  <a mat-list-item (click)="logout()">Logout</a>
 </mat-nav-list>
