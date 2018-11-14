@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 import { AuthData } from './auth-data.model';
 import { resolve } from 'url';
 import { reject } from 'q';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +16,12 @@ export class AuthService {
   private user: User;
   authChange = new Subject<boolean>();
 
-  constructor(private afAuth: AngularFireAuth) {}
+  constructor(private afAuth: AngularFireAuth, private router: Router) {}
 
   registerUser(authData: AuthData) {
     this.afAuth.auth.createUserWithEmailAndPassword(authData.email, authData.password)
       .then(result => {
-        this.authChange.next(true);
+        this.authSuccess(result);
         console.log(result);
         // this.uiService.loadingStateChanged.next(false);
         // this.store.dispatch(new UI.StopLoading());
@@ -33,7 +34,7 @@ export class AuthService {
   loginUser(authData: AuthData) {
     this.afAuth.auth.signInWithEmailAndPassword(authData.email, authData.password)
       .then(result => {
-        this.authChange.next(true);
+        this.authSuccess(result);
         console.log(result)
       })
       .catch(err => {
@@ -44,6 +45,7 @@ export class AuthService {
   logout() {
     this.user = null;
     this.authChange.next(false);
+    this.router.navigate(['/']);
   }
 
   getUser() {
@@ -93,6 +95,12 @@ export class AuthService {
           reject(err);
         })
     })
+  }
+
+  private authSuccess(result) {
+    this.user = result.user;
+    this.authChange.next(true);
+    this.router.navigate(['/user']);
   }
 
 }
