@@ -1,9 +1,10 @@
 <mat-nav-list (click)="onSidenavClose()">
+  <a *ngIf="isAuth" mat-list-item routerLink="/user">Profile</a>
   <a mat-list-item routerLink="/setup">Play</a>
   <a mat-list-item routerLink="/instructions">Rules</a>
-  <div *ngIf="">
+  <div *ngIf="!isAuth">
     <a mat-list-item routerLink="/login">Login</a>
     <a mat-list-item routerLink="/signup">Signup</a>
   </div>
-  <a mat-list-item (click)="logout()">Logout</a>
+  <a *ngIf="isAuth" mat-list-item (click)="onLogout()">Logout</a>
 </mat-nav-list>
