@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material';
 import { SetupDialogComponent } from '../dialog/setup-dialog/setup-dialog.component';
 import { categories, difficulties } from '../data.model';
 import { ScoreService } from '../shared/score.service';
+import { UiService } from '../shared/ui.service';
 
 @Component({
   selector: 'app-setup',
@@ -16,9 +17,12 @@ export class SetupComponent implements OnInit {
   categories = categories;
   difficulties = difficulties;
 
-  constructor(public dialog: MatDialog, private scoreService: ScoreService) { }
+  constructor(public dialog: MatDialog,
+              private scoreService: ScoreService,
+              private uiService: UiService) { }
 
   ngOnInit() {
+    this.uiService.navDisplayHide();
     this.scoreService.resetScore();
     setTimeout(() => {
       this.openDialog();
