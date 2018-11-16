@@ -25,7 +25,7 @@ import { environment } from '../environments/environment';
 import { SetupComponent } from './setup/setup.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
-import { ProfileComponent } from './profile/profile.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,7 @@ import { ProfileComponent } from './profile/profile.component';
     SetupComponent,
     SignupComponent,
     LoginComponent,
-    ProfileComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,
