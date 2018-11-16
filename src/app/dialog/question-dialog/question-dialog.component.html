@@ -1,12 +1,9 @@
-<div
-  fxLayout
-  class=""
->
+<div class="question-dialog">
   <mat-dialog-content>
     <mat-card-subtitle>
       <span>{{ data.category }}</span><span fxFlex>{{ data.index }} / 10</span>
     </mat-card-subtitle>
-    <mat-card-title class="p-t-10 p-b-10">{{ data.question | htmlDecoder }}</mat-card-title>
+    <mat-card-title class="p-t-10 p-b-10 m-b-20">{{ data.question | htmlDecoder }}</mat-card-title>
     <mat-card-content>
       <mat-grid-list
         [cols]="breakpoint"
@@ -36,3 +33,5 @@
     [value]="countDown"
     color="primary"
   ></mat-progress-bar>
+  <br>
+  <div><button mat-button (click)="onQuit()">Quit</button></div>

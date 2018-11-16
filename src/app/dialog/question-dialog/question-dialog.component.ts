@@ -5,6 +5,7 @@ import { UiService } from '../../shared/ui.service';
 import { correctMessages } from '../../data.model';
 import { incorrectMessages } from '../../data.model';
 import { ScoreService } from '../../shared/score.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-question-dialog',
@@ -29,7 +30,8 @@ export class QuestionDialogComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<any>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private uiService: UiService,
-              private scoreService: ScoreService) {}
+              private scoreService: ScoreService,
+              private router: Router) {}
 
   ngOnInit() {
     this.breakpoint = (window.innerWidth <= 570 ? 1 : 2);
@@ -41,16 +43,18 @@ export class QuestionDialogComponent implements OnInit {
   }
 
   startTimer() {
-    this.timer = setInterval(() => {
-      this.countDown -= 10;
-      if (this.countDown === 0) {
-        this.onAnswer(null)
-      }
-    }, 1000)
+    // this.timer = setInterval(() => {
+    //   this.countDown -= 10;
+    //   if (this.countDown === 0) {
+    //     this.onAnswer(null)
+    //   }
+    // }, 1000)
   }
 
-  stopTimer() {
-    
+  onQuit() {
+    console.log("quit");
+    this.uiService.quitGame();
+    this.dialogRef.close();
   }
 
   onResize(event) {
@@ -86,7 +90,6 @@ export class QuestionDialogComponent implements OnInit {
       this.uiService.showSnackBar(incorrectMessages[Math.floor(Math.random() * 6)] + `   The correct answer is ${this.correctAnswer}!`, null, this.config);
       this.scoreService.setScore(false, null);
     }
-    console.log(this.scoreService.getScore());
   }
 
 
