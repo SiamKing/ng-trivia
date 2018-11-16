@@ -26,6 +26,7 @@ import { SetupComponent } from './setup/setup.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { UserComponent } from './user/user.component';
+import { PastChallengesComponent } from './user/past-challenges/past-challenges.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { UserComponent } from './user/user.component';
     SignupComponent,
     LoginComponent,
     UserComponent,
+    PastChallengesComponent,
   ],
   imports: [
     BrowserModule,
