@@ -1,4 +1,4 @@
-<mat-toolbar class="transparent">
+<mat-toolbar *ngIf="displayNav" class="transparent">
   <div fxHide.gt-xs class="navigation-items">
     <button
       mat-icon-button
@@ -19,11 +19,12 @@
       fxLayoutGap="25px"
       class="navigation-items"
     >
+      <li *ngIf="isAuth"><a routerLink="/user">Profile</a></li>
       <li><a routerLink="/setup">Play</a></li>
       <li><a routerLink="/instructions">Rules</a></li>
-      <li><a routerLink="/login">Login</a></li>
-      <li><a routerLink="/signup">Signup</a></li>
-      <li><a (click)="logout()">Logout</a></li>
+      <li *ngIf="!isAuth"><a routerLink="/login">Login</a></li>
+      <li *ngIf="!isAuth"><a routerLink="/signup">Signup</a></li>
+      <li *ngIf="isAuth"><a (click)="onLogout()">Logout</a></li>
       
     </ul>
   </div>
