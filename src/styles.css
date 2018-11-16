@@ -76,6 +76,9 @@ app-question-dialog {
 .vw-75 {
     width: 75vw;
 }
+.vw-50 {
+    width: 50vw;
+}
 
 .mw-100 {
 	max-width: 100%;
@@ -91,6 +94,10 @@ app-question-dialog {
 
 .width-100 {
 	width: 100px;
+}
+
+.width-120 {
+	width: 120px;
 }
 
 .width-150 {
@@ -121,6 +128,30 @@ app-question-dialog {
 
 .m-t-20 {
 	margin-top: 20px;
+}
+
+.m-b-10 {
+	margin-bottom: 10px;
+}
+
+.m-b-20 {
+	margin-bottom: 20px;
+}
+
+.m-l-10 {
+	margin-left: 10px;
+}
+
+.m-l-20 {
+	margin-left: 20px;
+}
+
+.m-r-10 {
+	margin-right: 10px;
+}
+
+.m-r-20 {
+	margin-right: 20px;
 }
 
 /***** PADDING *****/
@@ -170,6 +201,10 @@ app-question-dialog {
 	padding-bottom: 10px;
 }
 
+.p-l-20 {
+	padding-left: 20px !important;
+}
+
 
 .p-10 {
 	padding: 10px !important;
@@ -194,8 +229,16 @@ app-question-dialog {
 	font-size: 4vw;
 }
 
+.font-14 {
+	font-size: 14px;
+}
+
 .font-18 {
 	font-size: 18px;
+}
+
+.font-22 {
+	font-size: 22px;
 }
 
 .font-24 {
@@ -204,6 +247,10 @@ app-question-dialog {
 
 .font-28 {
 	font-size: 28px;
+}
+
+.mat-snack-bar-container {
+	background-color: #187897 !important;
 }
 
 
