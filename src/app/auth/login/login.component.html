@@ -1,3 +1,87 @@
-<p>
-  login works!
-</p>
+<div
+  fxLayout="row"
+  fxLayoutAlign="center center"
+  class="signup-form"
+>
+  <mat-card
+    fxFlexAlign="center"
+    fxFlex.xs="100%"
+    fxFlex="30%"
+  >
+    <mat-card-header fxLayoutAlign="center">
+      <mat-card-title>
+        <h1 class="display-1 animated rubberBand">Login</h1>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content
+      fxLayoutAlign="center"
+      fxFill="100%"
+    >
+      <form
+        #f="ngForm"
+        (ngSubmit)="onLogin(f)"
+      >
+        <mat-form-field>
+          <input
+            type="email"
+            matInput
+            placeholder="Email"
+            ngModel
+            required
+            name="email"
+            #email="ngModel"
+          >
+          <mat-error *ngIf="email.invalid && email.touched">Must be a valid email address</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input
+            type="password"
+            minLength="8"
+            matInput
+            placeholder="Password"
+            ngModel
+            required
+            name="password"
+            #password="ngModel"
+          >
+          <mat-error *ngIf="password.invalid && password.touched">Must be a valid email address</mat-error>
+        </mat-form-field>
+        <mat-card-actions align="center">
+          <button
+            type="submit"
+            mat-raised-button
+            color="accent"
+            [disabled]="f.invalid"
+          >Login</button>
+          <a
+            routerLink="/signup"
+            class="m-l-10"
+          ><small>Not registered yet?</small></a>
+        </mat-card-actions>
+      </form>
+    </mat-card-content>
+    <mat-card-content style="text-align: center;">
+      <mat-card-actions>
+        <button
+          type="button"
+          mat-raised-button
+          class="register-button fb"
+          (click)="onFacebookLogin()"
+        >Login with Facebook</button>
+        <button
+          type="button"
+          mat-raised-button
+          class="register-button google"
+          (click)="onGoogleLogin()"
+        >Login with Google</button>
+        <button
+          type="button"
+          mat-raised-button
+          class="register-button twitter"
+          (click)="onTwitterLogin()"
+        >Login with Twitter</button>
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
+</div>

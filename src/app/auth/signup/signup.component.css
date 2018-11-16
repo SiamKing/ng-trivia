@@ -1,0 +1,30 @@
+.signup-form {
+    height: 80vh;
+}
+
+form {
+    width: 75%;
+    text-align: center;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.register-button {
+    width: 200px !important;
+    margin: 10px !important;
+    color: white;
+}
+
+.fb {
+    background-color: blue;
+}
+
+.google {
+    background-color: red;
+}
+
+.twitter {
+    background-color: lightblue;
+}
