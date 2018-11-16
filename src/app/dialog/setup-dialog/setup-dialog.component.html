@@ -3,8 +3,9 @@
     #f="ngForm"
     (ngSubmit)="onSubmit(f)"
   >
+    <mat-card-title class="p-t-10 p-b-10 m-b-10">You're Almost Playing!</mat-card-title>
     <mat-dialog-content>
-      <mat-form-field class="width-300 font-2vw sm-width-240">
+      <mat-form-field class="width-300 sm-width-240">
         <mat-select
           placeholder="Select a Category"
           ngModel
@@ -17,7 +18,7 @@
           >{{ category.name }}</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field class="width-300 font-2vw sm-width-240">
+      <mat-form-field class="width-300 sm-width-240">
         <mat-select
           placeholder="Select Difficulty"
           ngModel
