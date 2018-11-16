@@ -7,8 +7,7 @@ import { TriviaResult } from '../shared/trivia-result.model';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  dataSource = games;
-  triviaColumns = ['date', 'category', 'difficulty', 'correctAnswers', 'score'];
+  
 
   constructor() { }
 
@@ -16,20 +15,3 @@ export class UserComponent implements OnInit {
   }
 
 }
-
-const games: TriviaResult[] = [
-  {
-    date: "11/21/18",
-    category: "TV",
-    difficulty: "easy",
-    correctAnswers: 9,
-    score: 380
-  },
-  {
-    date: "11/22/18",
-    category: "politics",
-    difficulty: "medium",
-    correctAnswers: 7,
-    score: 460
-  }
-]
