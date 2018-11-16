@@ -9,6 +9,8 @@ import { QuestionDialogComponent } from '../dialog/question-dialog/question-dial
 import { shuffle } from '../shared/helper-functions';
 import { ScoreService } from '../shared/score.service';
 import { ScoreDialogComponent } from '../dialog/score-dialog/score-dialog.component';
+import { UiService } from '../shared/ui.service';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-play',
@@ -24,14 +26,26 @@ export class PlayComponent implements OnInit {
   category: string;
   difficulty: string;
   loading = true;
+  quit = false;
+  isAuth = false;
 
   constructor(private dataService: DataService,
               private scoreService: ScoreService,
               private router: Router,
-              public dialog: MatDialog) { }
+              public dialog: MatDialog,
+              private uiService: UiService,
+              private authService: AuthService) { }
 
   ngOnInit() {
+    this.authService.authChange.subscribe(authStatus => {
+      console.log(authStatus);
+      this.isAuth = authStatus;
+    });
+    this.uiService.quitter.subscribe(quitStatus => {
+      this.quit = quitStatus;
+    });
     this.dataService.getQuestions().subscribe(res => {
+      console.log(res);
       this.results = res['results'];
       this.setQuestion();
       this.loading = false;
@@ -55,7 +69,7 @@ export class PlayComponent implements OnInit {
 
   openQuestionDialog(): void {
     const dialogRef = this.dialog.open(QuestionDialogComponent, {
-      // width: '60%',
+      // maxWidth: '60vw',
       // height: '60%',
       disableClose: true,
       data: {
@@ -68,7 +82,7 @@ export class PlayComponent implements OnInit {
     })
 
     dialogRef.afterClosed().subscribe(res => {
-      if (this.index < 10) {
+      if (this.index < 10 && !this.quit) {
         this.setQuestion();
       } else  {
         this.openScoreDialog();
@@ -78,10 +92,9 @@ export class PlayComponent implements OnInit {
 
   openScoreDialog(): void {
     const score = this.scoreService.getScore();
-    console.log(score);
     const dialogRef = this.dialog.open(ScoreDialogComponent, {
       disableClose: true,
-      height: '320px',
+      height: '310px',
       minHeight: '60%',
       data: {
         correct: score.correct,
@@ -91,7 +104,15 @@ export class PlayComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(res => {
-      console.log('close score');
+      console.log(res);
+      this.uiService.navDisplayShow();
+      // this.scoreService.sendTrivia({
+        // new Date();
+        // this.category;
+        // this.difficulty;
+        // score.correct;
+        // score.score;
+      // })
     })
   }
 
