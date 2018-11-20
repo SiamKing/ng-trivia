@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 
 import { difficulties } from '../data.model';
-import { TriviaResult } from './trivia-result.model';
+import { TriviaResults } from './trivia-results.model';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class ScoreService {
   points = 0;
   difficulty: number;
 
-  constructor(private db: AngularFirestore) { }
+  constructor(private db: AngularFirestore, private authService: AuthService) { }
 
   setScore(correct: boolean, count: number) {
     if (correct) {
@@ -37,7 +38,4 @@ export class ScoreService {
     this.incorrectScore = 0;
   }
 
-  sendTriviaData(trivia: TriviaResult) {
-    this.db.collection('trivia-games').add(trivia);
-  }
 }
