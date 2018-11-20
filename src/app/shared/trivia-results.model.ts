@@ -1,5 +1,5 @@
 export interface TriviaResults {
-    date: string;
+    date: any;
     category: string;
     difficulty: string;
     correctAnswers: number;
