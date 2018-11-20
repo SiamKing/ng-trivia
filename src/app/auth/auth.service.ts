@@ -8,6 +8,7 @@ import { AuthData } from './auth-data.model';
 import { resolve } from 'url';
 import { reject } from 'q';
 import { Router } from '@angular/router';
+import {  AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -15,27 +16,65 @@ import { Router } from '@angular/router';
 export class AuthService {
   private user: User;
   authChange = new Subject<boolean>();
+  authUser = new Subject<any>();
+  private isAuthenticated = false;
 
-  constructor(private afAuth: AngularFireAuth, private router: Router) {}
+  constructor(private afAuth: AngularFireAuth, private router: Router, private db: AngularFirestore) {}
 
-  registerUser(authData: AuthData) {
+  initAuthListener() {
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        console.log(user);
+        this.user = user;
+        this.authUser.next(user)
+        localStorage.setItem('userUID', user.uid);
+        this.isAuthenticated = true;
+        this.authChange.next(true);
+        this.router.navigate(['/user']);
+      } else {
+        this.user = null;
+        this.authUser.next(null)
+        localStorage.removeItem('userUID');
+        this.authChange.next(false);
+        this.isAuthenticated = false;
+        this.router.navigate(['/']);
+      }
+    });
+  }
+
+  registerUser(authData: AuthData, displayName: string) {
     this.afAuth.auth.createUserWithEmailAndPassword(authData.email, authData.password)
       .then(result => {
-        this.authSuccess(result);
-        console.log(result);
+        console.log(result)
         // this.uiService.loadingStateChanged.next(false);
         // this.store.dispatch(new UI.StopLoading());
       })
       .catch(error => {
         // this.uiService.showSnackBar(error.message, null, 3000);
       })
+
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        console.log(user);
+        this.user.updateProfile({
+          displayName: displayName,
+          photoURL: ''
+        })
+        .then(() => {
+           console.log('Display name changed', this.user)
+        })
+        .catch(() => console.log('Error with display name'));
+        this.db.collection('users').doc(this.user.uid).set({username: displayName, email: authData.email })
+          .then(res => console.log(res))
+          .catch(err => console.log(err))
+      }
+    });
   }
   
   loginUser(authData: AuthData) {
     this.afAuth.auth.signInWithEmailAndPassword(authData.email, authData.password)
       .then(result => {
-        this.authSuccess(result);
-        console.log(result)
+        
       })
       .catch(err => {
         console.log(err);
@@ -43,17 +82,18 @@ export class AuthService {
   }
 
   logout() {
+    this.afAuth.auth.signOut();
     this.user = null;
-    this.authChange.next(false);
-    this.router.navigate(['/']);
+    this.authUser.next(null);
+    localStorage.removeItem('userUID');
   }
 
   getUser() {
-    return { ...this.user }; // this makes a copy so the user object can't be changed outside of this component
+    return this.afAuth.user;
   }
 
   isAuth() {
-    return this.user != null;
+    return this.isAuthenticated;
   }
 
   doFacebookLogin() {
@@ -95,12 +135,6 @@ export class AuthService {
           reject(err);
         })
     })
-  }
-
-  private authSuccess(result) {
-    this.user = result.user;
-    this.authChange.next(true);
-    this.router.navigate(['/user']);
   }
 
 }
