@@ -118,6 +118,15 @@ app-question-dialog {
 
 
 /***** MARGIN *****/
+
+.m-a-10 {
+	margin: 10px;
+}
+
+.m-a-20 {
+	margin: 20px;
+}
+
 .m-t-5 {
 	margin-top: 5px;
 }
