@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
               private uiService: UiService) { }
 
   ngOnInit() {
-    this.authService.authChange.subscribe(authStatus => {
+    this.authSubscription = this.authService.authChange.subscribe(authStatus => {
       this.isAuth = authStatus;
     })
     this.uiService.navDisplay.subscribe(navDisplay => {
