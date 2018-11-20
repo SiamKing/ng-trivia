@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { TriviaResults } from 'src/app/shared/trivia-results.model';
@@ -8,36 +8,35 @@ import { TriviaResults } from 'src/app/shared/trivia-results.model';
 @Injectable({
   providedIn: 'root'
 })
-export class TriviaResultsService {
+export class TriviaResultsService implements OnInit {
   // triviaResults = games;
-  // triviaResults: Observable<TriviaResult>;
+  triviaResults: TriviaResults[];
   triviaResultsChanged = new Subject<TriviaResults[]>();
+  triviaSubs: Subscription[] = [];
 
   constructor(private db: AngularFirestore) { }
 
-  fetchPastChallenges() {
-    return games;
-    // return this.db
-    //   .collection('past-challenges')
-      // .valueChanges().subscribe((results: TriviaResults[]) => { this.triviaResultsChanged.next(results) })
+  ngOnInit() {
+    this.fetchPastChallenges();
+  }
 
-      // Other way with more values with the payload
-    //   .snapshotChanges()
-    //   .pipe(docArray => {
-    //     return docArray.map(doc => {
-    //       return {
-    //       ...doc.payload.doc.data()
-    //     };
-    //   });
-    // })
-    // .subscribe((results: TriviaResults[]) => {
-    //   this.triviaResults = results;
-    //   this.triviaResultsChanged.next([...this.triviaResults]);
-    // })
+  fetchPastChallenges() {
+    const userId = localStorage.getItem('userUID');
+    return this.db.collection('users')
+      .doc(userId)
+      .collection<TriviaResults[]>('trivia-results')
+      .valueChanges()
+  }
+
+  sendTriviaData(trivia: TriviaResults) {
+    console.log("Sending trivia");
+    this.addResultsToDatabase(trivia);
   }
 
   private addResultsToDatabase(triviaResults: TriviaResults) {
-    this.db.collection('trivia-results').add(triviaResults);
+    const userId = localStorage.getItem('userUID');
+    console.log(userId);
+    this.db.collection('users').doc(userId).collection('trivia-results').add(triviaResults);
   }
 
 }
