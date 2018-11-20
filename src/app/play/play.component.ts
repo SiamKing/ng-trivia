@@ -11,6 +11,7 @@ import { ScoreService } from '../shared/score.service';
 import { ScoreDialogComponent } from '../dialog/score-dialog/score-dialog.component';
 import { UiService } from '../shared/ui.service';
 import { AuthService } from '../auth/auth.service';
+import { TriviaResultsService } from '../user/trivia-results.service';
 
 @Component({
   selector: 'app-play',
@@ -34,7 +35,8 @@ export class PlayComponent implements OnInit {
               private router: Router,
               public dialog: MatDialog,
               private uiService: UiService,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private triviaResultsService: TriviaResultsService) { }
 
   ngOnInit() {
     this.authService.authChange.subscribe(authStatus => {
@@ -104,15 +106,21 @@ export class PlayComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(res => {
-      console.log(res);
+      console.log(this.isAuth);
+
+      if (this.isAuth) {
+        console.log("this.authService.getUser()");
+        this.triviaResultsService.sendTriviaData({
+          date: new Date(),
+          category: this.category,
+          difficulty: this.difficulty,
+          correctAnswers: score.correct,
+          score: score.points,
+          completed: 'yes'
+        })
+      }
       this.uiService.navDisplayShow();
-      // this.scoreService.sendTrivia({
-        // new Date();
-        // this.category;
-        // this.difficulty;
-        // score.correct;
-        // score.score;
-      // })
+      
     })
   }
 
